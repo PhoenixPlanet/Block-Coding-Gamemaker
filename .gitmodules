@@ -1,0 +1,6 @@
+[submodule "Libraries/blockly"]
+	path = Libraries/blockly
+	url = https://github.com/PhoenixPlanet/blockly.git
+[submodule "Libraries/closure-library"]
+	path = Libraries/closure-library
+	url = https://github.com/google/closure-library.git

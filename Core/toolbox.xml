@@ -1,0 +1,11 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+  <category name="Python">
+    <block type="print_log">
+      <value name="Print">
+        <shadow type="text">
+          <field name="TEXT"/>
+        </shadow>
+      </value>
+    </block>
+  </category>
+</xml>

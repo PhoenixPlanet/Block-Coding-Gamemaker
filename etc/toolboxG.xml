@@ -1,0 +1,7 @@
+  <block type="print_log">
+    <value name="PRINT">
+      <shadow type="text">
+        <field name="TEXT"/>
+      </shadow>
+    </value>
+  </block>

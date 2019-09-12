@@ -5,18 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="style.css">
   <script src="blockly_compressed.js"></script>
+  <script src="python_compressed.js"></script>
   <script src="blocks_compressed.js"></script>
   <script src="demo.js"></script>
   <script src="demo_gen.js"></script>
-  <!-- <script src="workspace.js"></script> -->
+  <script src="workspace.js"></script>
   <!-- TODO: Select msg file based on locale. -->
   <script src="msg/js/en.js"></script>
-  <!--<script src="toolbox_standard.js"></script>-->
+  <script src="FileSaver.js"></script>
+  <script src="blocks/python_base.js"></script>
+  <script src="toolbox.js"></script>
 </head>
 <body>
-  <div id="blocklyDiv"></div>
-
-  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+  <input id="save_button" type="button" style="margin-top:10px;margin-right:20px;" onClick="py_save();" value="Save Block"/>
+  <div id="blocklyDiv" style="float:left;margin:0px 10px 0px 10px;height:70%; width:50%;"></div>
+  <textarea id="codeArea" readonly style="display:inline-block;margin:0px 20px 0px;resize:none;height:30%;width:40%"></textarea>
+  
+  <xml id="workspaceBlocks" style="display: none"/>
+  
+  <xml id="toolbox" style="display: none">
     <category name="Python">
       <block type="print_log">
         <value name="Print">
@@ -28,12 +35,27 @@
     </category>
   </xml>
 
+  <script src="workspace.js"></script>
   <script type="text/javascript">
-    var workspacePlayground = Blockly.inject('blocklyDiv', {
-          media: 'media/',
-          toolbox: document.getElementById("toolbox"),
-          zoom: {controls: true}
-        });
+
+    var codeArea = document.getElementById("codeArea");
+    var code = Blockly.Python.workspaceToCode(mainWorkspace);
+    codeArea.value = code;
+
+    function codeUpdate(event){
+      code = Blockly.Python.workspaceToCode(mainWorkspace);
+      codeArea.value = code;
+    }
+
+    function py_save(){
+      alert(code);
+      code = Blockly.Python.workspaceToCode(mainWorkspace);
+      alert(code);
+      var blobObject = new Blob([code]);
+      saveAs(blobObject,"download.py");
+    }
+
+    mainWorkspace.addChangeListener(codeUpdate);
   </script>
 </body>
 </html>

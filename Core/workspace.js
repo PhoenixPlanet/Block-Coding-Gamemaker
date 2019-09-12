@@ -1,5 +1,6 @@
 /* TODO: Change toolbox XML ID if necessary. Can export toolbox XML from Workspace Factory. */
-var toolbox = document.getElementById("toolbox");
+var toolbox = BLOCKLY_TOOLBOX_XML['basic'];
+//var toolbox = document.getElementById("toolbox");
 
 var options = { 
 	toolbox : toolbox, 
@@ -11,7 +12,7 @@ var options = {
 	horizontalLayout : false, 
 	toolboxPosition : 'start', 
 	css : true, 
-	media : 'https://blockly-demo.appspot.com/static/media/', 
+	media : 'media/', 
 	rtl : false, 
 	scrollbars : true, 
 	sounds : true, 
@@ -26,10 +27,7 @@ var options = {
 	}
 };
 
-/* Inject your workspace */ 
-var workspace = Blockly.inject(/* TODO: Add ID of div to inject Blockly into */, options);
-
-/* Load Workspace Blocks from XML to workspace. Remove all code below if no blocks to load */
+var mainWorkspace = Blockly.inject("blocklyDiv", options);
 
 /* TODO: Change workspace blocks XML ID if necessary. Can export workspace blocks XML from Workspace Factory. */
 var workspaceBlocks = document.getElementById("workspaceBlocks"); 

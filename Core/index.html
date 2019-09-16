@@ -17,9 +17,13 @@
   <script src="toolbox.js"></script>
 </head>
 <body>
-  <input id="save_button" type="button" style="margin-top:10px;margin-right:20px;" onClick="py_save();" value="Save Block"/>
-  <div id="blocklyDiv" style="float:left;margin:0px 10px 0px 10px;height:70%; width:50%;"></div>
-  <textarea id="codeArea" readonly style="display:inline-block;margin:0px 20px 0px;resize:none;height:30%;width:40%"></textarea>
+  <div id="buttonDiv" style="display:inline-block;margin:5px 10px 0px;height:5%;width:40%">
+      <input id="load_block_button" type="button" style="display:inline" onClick="py_save();" value="Load Block"/>
+      <input id="save_block_button" type="button" style="display:inline" onClick="py_save();" value="Save Block"/>
+      <input id="save_code_button" type="button" style="display:inline;" onClick="py_save();" value="Save Code"/>
+  </div>
+  <div id="blocklyDiv" style="float:left;margin:5px 10px 0px 10px;height:90%; width:50%;"></div>
+  <textarea id="codeArea" readonly style="display:inline-block;margin:5px 10px 0px;resize:none;height:30%;width:40%"></textarea>
   
   <xml id="workspaceBlocks" style="display: none"/>
   

@@ -7,14 +7,13 @@
   <script src="blockly_compressed.js"></script>
   <script src="python_compressed.js"></script>
   <script src="blocks_compressed.js"></script>
-  <script src="demo.js"></script>
-  <script src="demo_gen.js"></script>
-  <script src="workspace.js"></script>
   <!-- TODO: Select msg file based on locale. -->
   <script src="msg/js/en.js"></script>
   <script src="FileSaver.js"></script>
-  <script src="blocks/python_base.js"></script>
   <script src="toolbox.js"></script>
+  <script src="blocks/demo.js"></script>
+  <script src="blocks/demo_gen.js"></script>
+  <script src="js/jquery.js"></script>
 </head>
 <body>
   <div id="buttonDiv" style="display:inline-block;margin:5px 10px 0px;height:5%;width:40%">
@@ -24,20 +23,6 @@
   </div>
   <div id="blocklyDiv" style="float:left;margin:5px 10px 0px 10px;height:90%; width:50%;"></div>
   <textarea id="codeArea" readonly style="display:inline-block;margin:5px 10px 0px;resize:none;height:30%;width:40%"></textarea>
-  
-  <xml id="workspaceBlocks" style="display: none"/>
-  
-  <xml id="toolbox" style="display: none">
-    <category name="Python">
-      <block type="print_log">
-        <value name="Print">
-          <shadow type="text">
-            <field name="TEXT"></field>
-          </shadow>
-        </value>
-      </block>
-    </category>
-  </xml>
 
   <script src="workspace.js"></script>
   <script type="text/javascript">
@@ -52,9 +37,7 @@
     }
 
     function py_save(){
-      alert(code);
       code = Blockly.Python.workspaceToCode(mainWorkspace);
-      alert(code);
       var blobObject = new Blob([code]);
       saveAs(blobObject,"download.py");
     }

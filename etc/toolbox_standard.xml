@@ -2,9 +2,26 @@
   <category name="Python">
     <block type="print_log">
       <field name="NAME">Print</field>
-      <value name="NAME">
+      <value name="PRINT">
         <shadow type="text">
           <field name="TEXT"/>
+        </shadow>
+      </value>
+    </block>
+  </category>
+  <category name="Pygame">
+    <block type="import_pygame">
+      <field name="SCREEN_X">0</field>
+      <field name="SCREEN_Y">0</field>
+      <field name="FPS_TYPE">TICK</field>
+      <value name="CAPTION">
+        <shadow type="text">
+          <field name="TEXT">Pygame</field>
+        </shadow>
+      </value>
+      <value name="FPS">
+        <shadow type="math_number">
+          <field name="NUM">30</field>
         </shadow>
       </value>
     </block>

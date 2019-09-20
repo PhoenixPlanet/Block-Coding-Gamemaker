@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- HTML file to host Blockly in a mobile WebView. -->
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script src="js/jquery.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+  <script src="dialog.js"></script>
+</head>
+<body>
+    <div id="dialog"></div>
+    
+    <div id="buttonDiv" style="display:inline-block;margin:5px 10px 0px;height:5%;width:40%">
+        <input id="show_dialog_button" type="button" style="display:inline" onClick="dialog_show();" value="show dialog"/>
+    </div>
+
+    <div id="doclist">
+        <ul id="documents">
+            <li><a href="#" id = "1" rel="read" title="This is the content of Document1">탭1</a></li>
+            <li><a href="#" id = "2" rel="readPage2" title="This is the content of Document2">탭2</a></li>
+            <li><a href="#" id = "3" rel="readPage3" title="This is the content of Document3">탭3</a></li>
+            <li><a href="#" id = "4" rel="readPage4" title="This is the content of Document4">탭4</a></li>
+            <li><a href="#" id = "5" rel="readPage5" title="This is the content of Document5">탭5</a></li>
+        </ul>
+    </div>
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-0">intro</a> <span class="ui-icon ui-icon-close" role="presentation">삭제</span></li>
+      </ul>
+      <div id="tabs-0">
+        <p>탭 구현</p>
+      </div>
+    </div>
+</body>
+</html>

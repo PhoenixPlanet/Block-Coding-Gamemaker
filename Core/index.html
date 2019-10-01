@@ -4,18 +4,67 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="style.css">
-  <script src="blockly_compressed.js"></script>
-  <script src="python_compressed.js"></script>
-  <script src="blocks_compressed.js"></script>
+  <!--choose Theme-->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+  <!--<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">-->
+  <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+  <!--use version 1.10.4 to show dialog close button properly or just use 1.12.1-->
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="blocks/blockly_compressed.js"></script>
+  <script src="blocks/python_compressed.js"></script>
+  <script src="blocks/blocks_compressed.js"></script>
   <!-- TODO: Select msg file based on locale. -->
   <script src="msg/js/en.js"></script>
-  <script src="FileSaver.js"></script>
-  <script src="toolbox.js"></script>
+  <script src="js/FileSaver.js"></script>
+  <script src="toolbox/toolbox.js"></script>
   <script src="blocks/demo.js"></script>
   <script src="blocks/demo_gen.js"></script>
-  <script src="js/jquery.js"></script>
+
+  <script src="scripts/tab_creator.js"></script>
+  <script src="scripts/ready.js"></script>
+
+  <style>
+    .ui-widget-header,.ui-state-default, ui-button {
+        background:#b9cd6d;
+        border: 1px solid #b9cd6d;
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+
+    #tabs { margin:0; padding:0; list-style:none; overflow:hidden; }
+    #tabs li { float:left; display:block; padding:5px; background-color:#bbb; margin-right:5px;}
+    #tabs li a { color:#fff; text-decoration:none; }
+    #tabs li.current { background-color:#e1e1e1;}
+    #tabs li.current a { color:#000; text-decoration:none; }
+    #tabs li a.remove { color:#f00; margin-left:10px;}
+    #tab_content { background-color:#e1e1e1;}
+    #wrapper { background-color:#463535;}
+  </style>
 </head>
+
 <body>
+  <div id="new_sprite_dialog">
+    <p>새 스프라이트 타입</p>
+    <select name='sprite_type' id="sprite_type">
+      <optgroup label="오브젝트">
+        <option value='player' selected>플레이어</option>
+        <option value="character">캐릭터</option>
+        <option value='move_item'>유동아이템</option>
+        <option value='fixed_item'>고정아이템</option>
+        <option value='dummy'>더미</option>
+      </optgroup>
+      <optgroup label="스테이지">
+        <option value='background'>배경</option>
+        <option value='level'>레벨</option>
+      </optgroup>
+      <optgroup label="기타">
+        <option value='free'>자유</option>
+      </optgroup>
+    </select>
+    <p>스프라이트 이름</p>
+    <input type="text" id="divname"/>
+  </div>
+
   <xml id="workspaceBlocks" style="display: none">
     <block type="import_pygame" id="C.xEVjTdOrB,_TcZuH2r" x="13" y="13" movable="false">
       <field name="SCREEN_X">0</field>
@@ -28,11 +77,19 @@
       <input id="load_block_button" type="button" style="display:inline" onClick="py_save();" value="Load Block"/>
       <input id="save_block_button" type="button" style="display:inline" onClick="py_save();" value="Save Block"/>
       <input id="save_code_button" type="button" style="display:inline;" onClick="py_save();" value="Save Code"/>
+      <input id="show_dialog_button" type="button" style="display:inline" value="show dialog"/>
   </div>
-  <div id="blocklyDiv" style="float:left;margin:5px 10px 0px 10px;height:90%; width:50%;"></div>
+
+  <div id="wrapper" style="float:left;margin:5px 10px 0px 10px;height:95%; width:50%;">
+    <ul id="tabs"></ul>
+    <div id="tab_content" style="height:100%; width:100%;">
+      <!--아래와 같은 형식의 div가 생성된다-->
+      <!--<div id="aDiv" style="height:100%; width:100%;"></div>-->
+    </div>
+  </div>
+
   <textarea id="codeArea" readonly style="display:inline-block;margin:5px 10px 0px;resize:none;height:30%;width:40%"></textarea>
 
-  <script src="workspace.js"></script>
   <script type="text/javascript">
 
     var codeArea = document.getElementById("codeArea");

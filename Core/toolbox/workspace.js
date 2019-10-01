@@ -27,7 +27,7 @@ var options = {
 	}
 };
 
-var mainWorkspace = Blockly.inject("blocklyDiv", options);
+var mainWorkspace = Blockly.inject("aDiv", options);
 
 /* TODO: Change workspace blocks XML ID if necessary. Can export workspace blocks XML from Workspace Factory. */
 var workspaceBlocks = document.getElementById("workspaceBlocks"); 
